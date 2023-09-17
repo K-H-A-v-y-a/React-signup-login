@@ -43,6 +43,25 @@ input {
     letter-spacing: 1.92px;
 }
 
+.custom-select {
+    width: 400px;
+    height: 40px;
+    padding: 10px;
+    flex-shrink: 0;
+    appearance: none;
+	border: none;
+	outline: none;
+    border-bottom: .2em solid #3bc6d0;
+    border-radius: 7px;
+    background: #FFF;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    letter-spacing: 1.92px;
+}
+
 button{
 
     width: 90px;
@@ -76,3 +95,4 @@ button{
     font-size: 20px;
     padding-top: 10px;
 }
+
