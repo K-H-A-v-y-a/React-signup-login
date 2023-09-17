@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
-  const navigate = useNavigate();
+  const history = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [registrationMessage, setRegistrationMessage] = useState('');
 
   const isEmailValid = (email) => {
     // Use a regular expression to validate the email format
@@ -45,6 +44,7 @@ function Signup() {
     }
 
     try {
+      // Send a POST request to your server for signup
       const response = await fetch("http://localhost:3000/sign", {
         method: 'POST',
         headers: {
@@ -53,21 +53,16 @@ function Signup() {
         body: JSON.stringify({ name, email, password, confirmPassword }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
-
       const data = await response.json();
       
       if (data.status === "error") {
         alert(data.message);
       } else if (data.status === "success") {
-        // Set the registration message and navigate to the login page
-        setRegistrationMessage(data.message);
-        navigate('/'); // Navigate to the login page
+        alert(data.message);
+        history('/');
       }
     } catch (error) {
-      console.error("Fetch error:", error);
+      console.error("Server Error", error);
     }
   };
 
@@ -84,7 +79,6 @@ function Signup() {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /><br /><br />
           <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required /><br /><br />
           <button onClick={handleSignup}>SignUp</button>
-          {registrationMessage && <p>Registration successful: {registrationMessage}</p>}
         </div>
       </div>
     </>
@@ -92,6 +86,7 @@ function Signup() {
 }
 
 export default Signup;
+
 
 
 
