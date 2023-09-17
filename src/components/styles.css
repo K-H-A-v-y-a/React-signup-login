@@ -1,0 +1,75 @@
+.container{
+    
+    margin-left: 900PX;
+    margin-top: 110px;
+    width: 500px;
+    height: 500px;
+    border-radius: 54px;
+    background: rgba(19, 93, 153, 0.14);
+}
+.container-credentials{
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+h2{
+
+    color: #000000;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.92px;
+
+}
+
+input {
+
+    width: 200px;
+    height: 40px;
+    flex-shrink: 0;
+    outline: none;
+    border-radius: 7px;
+    background: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    letter-spacing: 1.92px;
+}
+
+button{
+
+    width: 90px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    background: #135D99;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    letter-spacing: 1.92px;
+}
+
+.navLink p{
+    margin-left: 85%;
+    color: #135D99;
+    font-family: Montserrat;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    letter-spacing: 1.92px;
+}
+
+
+.success-message{
+    color: #135D99;
+    font-size: 20px;
+    padding-top: 10px;
+}
