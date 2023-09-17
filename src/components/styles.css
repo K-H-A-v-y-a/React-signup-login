@@ -26,14 +26,17 @@ h2{
 
 input {
 
-    width: 200px;
+    width: 400px;
     height: 40px;
     flex-shrink: 0;
-    outline: none;
+    appearance: none;
+	border: none;
+	outline: none;
+    border-bottom: .2em solid #3bc6d0;
     border-radius: 7px;
     background: #FFF;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 550;
     line-height: normal;
@@ -49,7 +52,7 @@ button{
     background: #135D99;
     color: #FFF;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 550;
     line-height: normal;

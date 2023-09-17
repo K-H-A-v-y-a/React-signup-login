@@ -73,13 +73,12 @@ function Signup() {
                 <div className="container-credentials">
                     <h2>SignUp</h2>
                     <form>
-                        <label>Name: </label>
                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required /><br /><br />
-                        <label>Email: </label>
+                        
                         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /><br /><br />
-                        <label>Password: </label>
+                        
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /><br /><br />
-                        <label>Confirm Password: </label>
+                        
                         <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required /><br /><br />
                         <button onClick={submit}>SignUp</button>
                     </form>

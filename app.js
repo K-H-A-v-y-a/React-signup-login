@@ -32,9 +32,7 @@ app.post('/sign', async(req, res) => {
     }
 
     console.log(name, email, password, confirmPassword);
-    if (password !== confirmPassword) {
-        return res.status(400).json({ status: 'error', message: 'Password and Confirm Password do not match.' });
-    }
+    
     try{
         const check=await collection.findOne({email:email})
     
@@ -60,6 +58,7 @@ app.post('/', async(req, res) => {
         
         if (check.email === email && check.password === password) {
                 req.session.userEmail = email;
+                console.log(req.session.userEmail);
                 return res.status(200).json({ status: 'success', message: 'Login success.' });
         }else{
             return res.status(200).json({ status: 'error', message: 'Invalid credentials' });
