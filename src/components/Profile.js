@@ -55,7 +55,7 @@ function Profile() {
   return (
     <>
       <div className="navLink">
-        <Link to="/"><p>Logout</p></Link>
+        <Link to="/React-signup-login/"><p>Logout</p></Link>
       </div>
       <div className="container">
         <div className="container-credentials">

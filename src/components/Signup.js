@@ -59,7 +59,7 @@ function Signup() {
         alert(data.message);
       } else if (data.status === "success") {
         alert(data.message);
-        history('/');
+        history('/React-signup-login/');
       }
     } catch (error) {
       console.error("Server Error", error);
@@ -69,7 +69,7 @@ function Signup() {
   return (
     <>
       <div className="navLink">
-        <Link to="/"><p>Login</p></Link>
+        <Link to="/React-signup-login/"><p>Login</p></Link>
       </div>
       <div className="container">
         <div className="container-credentials">

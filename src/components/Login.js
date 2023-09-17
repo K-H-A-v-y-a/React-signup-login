@@ -24,7 +24,7 @@ function Login() {
         alert(data.message);
       } else if (data.status === "success") {
         alert(data.message);
-        history('/profile');
+        history('/React-signup-login/profile');
       }
     } catch (error) {
       console.error("Server Error", error);
@@ -34,7 +34,7 @@ function Login() {
   return (
     <>
       <div className="navLink">
-        <Link to="/sign"><p>Signup</p></Link>
+        <Link to="/React-signup-login/sign"><p>Signup</p></Link>
       </div>
 
       <div className="container">
