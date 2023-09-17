@@ -3,18 +3,23 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const collection = require("./mongo")
 const cors = require('cors');
+const crypto = require('crypto');
 
 const app = express();
 const port = 3000;
+
+const secretKey = crypto.randomBytes(32).toString('hex');
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
     session({
-      secret: 'your-secret-key', // Change this to a secure secret key
+      secret: secretKey,
       resave: false,
       saveUninitialized: true,
-      cookie: { secure: false }, // Set secure to true for HTTPS
+      cookie: {
+        maxAge: 3600000, 
+      },
     })
   );
 
@@ -53,11 +58,9 @@ app.post('/', async(req, res) => {
     try{
         const check = await collection.findOne({ email: email });
         
-        if (check) {
-            if (check.password === password) {
+        if (check.email === email && check.password === password) {
                 req.session.userEmail = email;
                 return res.status(200).json({ status: 'success', message: 'Login success.' });
-            }
         }else{
             return res.status(200).json({ status: 'error', message: 'Invalid credentials' });
         }
@@ -71,24 +74,26 @@ app.post('/', async(req, res) => {
 app.post('/profile', async(req, res) => {
     const { age,dob,gender,mobileno } = req.body;
     const email = req.session.userEmail;
+    
+    const filter = { email: email }; 
 
     const update = {
         $set: {
-          age: age,
-          dob: dob,
-          gender: gender,
-          mobileno: mobileno,
+            age: age,
+            dob: dob,
+            gender: gender,
+            mobileno: mobileno,
         },
-      };
+    };
 
     console.log(email);
     console.log(update)
     
     try{
-        const check=await collection.findOne({email:email})
-    
-        if (check) {
-            await collection.updateOne(update)
+        const result = await collection.findOne(filter);
+
+        if (result) {
+            await collection.updateOne(filter, update);
             return res.status(201).json({ status: 'success', message: 'Update success.' });
         }else{
             return res.status(201).json({ status: 'error', message: 'Not updated' });

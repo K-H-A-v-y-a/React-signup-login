@@ -20,7 +20,11 @@ const newSchema=new mongoose.Schema({
     password:{
         type:String,
         required:true
-    }
+    },
+    age: {Number},
+    dob: {Date},
+    gender: {String},
+    mobileno: {String},
 })
 
 const collection = mongoose.model("collection",newSchema)

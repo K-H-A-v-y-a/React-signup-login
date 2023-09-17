@@ -5,8 +5,12 @@ import {Link} from "react-router-dom";
 function Profile(){
   const [age, setAge] = useState('');
   const [dob, setDob] = useState('');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('male');
   const [mobileno, setMobileno] = useState('');
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value); // Update the gender state when a radio button is selected
+  };
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
@@ -16,6 +20,10 @@ function Profile(){
     setTimeout(() => {
       setShowSuccessMessage(false);
     }, 3000); 
+    setAge('');
+    setDob('');
+    setGender('');
+    setMobileno('');
   };
 
   async function submit(e) {
@@ -49,9 +57,9 @@ function Profile(){
                   <h2>Profile</h2>
                       Age: <input type="number" onChange={(e) => { setAge(e.target.value) }} placeholder="Age" name="age" /><br></br><br></br>
                       <label for="gender">Gender</label>
-                      <select onChange={(e) => { setGender(e.target.value) }}>
-                          <option>Male</option>
-                          <option>Female</option>
+                      <select id="gender" onChange={handleGenderChange} value={gender}>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                       </select>
                       <br></br><br></br>
                       DOB: <input type="date" onChange={(e) => { setDob(e.target.value) }} name="dob" placeholder="DOB" /><br></br><br></br>

@@ -10,11 +10,40 @@ function Signup() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    async function submit(e) {
-        e.preventDefault();
+    const isEmailValid = (email) => {
+        // Use a regular expression to validate the email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const isPasswordValid = (password) => {
+        // Check if the password meets your criteria (e.g., minimum length)
+        return password.length >= 6;
+    };
+
+    const validateForm = () => {
+        if (!isEmailValid(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        if (!isPasswordValid(password)) {
+            alert("Password must be at least 6 characters long.");
+            return false;
+        }
 
         if (password !== confirmPassword) {
             alert("Password and Confirm Password do not match.");
+            return false;
+        }
+
+        return true;
+    };
+
+    async function submit(e) {
+        e.preventDefault();
+
+        if (!validateForm()) {
             return;
         }
 
@@ -30,7 +59,7 @@ function Signup() {
                 history('/');
             }
         } catch (error) {
-            alert("Server Error " + error.message);
+            alert("Server Error: " + error.message);
             console.error(error);
         }
     }
@@ -43,11 +72,17 @@ function Signup() {
             <div className="container">
                 <div className="container-credentials">
                     <h2>SignUp</h2>
-                    Name : <input type="text" onChange={(e) => { setName(e.target.value) }} placeholder="Name" /><br /><br />
-                    Email : <input type="email" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email" /><br /><br />
-                    Password : <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" /><br /><br />
-                    Confirm Password : <input type="password" onChange={(e) => { setConfirmPassword(e.target.value) }} placeholder="Confirm Password" /><br /><br />
-                    <button onClick={submit}>SignUp</button>
+                    <form>
+                        <label>Name: </label>
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required /><br /><br />
+                        <label>Email: </label>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /><br /><br />
+                        <label>Password: </label>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /><br /><br />
+                        <label>Confirm Password: </label>
+                        <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required /><br /><br />
+                        <button onClick={submit}>SignUp</button>
+                    </form>
                 </div>
             </div>
         </>

@@ -19,7 +19,7 @@ function Login(){
                 email,password
             })
             .then(res=>{
-                if (res.data.status === "exist") {
+                if (res.data.status === "error") {
                     alert(res.data.message);
                   } else if (res.data.status === "success") {
                     alert(res.data.message);
