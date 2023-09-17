@@ -45,7 +45,7 @@ function Signup() {
 
     try {
       // Send a POST request to your server for signup
-      const response = await fetch("http://localhost:3000/sign", {
+      const response = await fetch("https://k-h-a-v-y-a.github.io/React-signup-login/sign", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
