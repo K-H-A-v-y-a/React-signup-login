@@ -31,7 +31,7 @@ function Profile() {
   const handleProfileUpdate = async () => {
     try {
       // Send a POST request to your server for profile update
-      const response = await fetch("http://localhost:3000/profile", {
+      const response = await fetch("https://k-h-a-v-y-a.github.io/React-signup-login/profile", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

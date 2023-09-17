@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       // Send a POST request to your server for login
-      const response = await fetch("http://localhost:3000/", {
+      const response = await fetch("https://k-h-a-v-y-a.github.io/React-signup-login/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
